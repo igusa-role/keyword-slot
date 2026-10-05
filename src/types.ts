@@ -20,6 +20,7 @@ export type Difficulty = (typeof DIFFICULTY_ORDER)[number]
 
 export interface KeywordItem {
   keyword: string
+  englishKeyword: string
   category: Category
   difficulty: Difficulty
   salesCount: number

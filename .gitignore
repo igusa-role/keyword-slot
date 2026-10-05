@@ -1,4 +1,5 @@
 node_modules/
 dist/
 .keyword_catalog_cache.json
+.keyword_translation_cache.json
 *.tsbuildinfo

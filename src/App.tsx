@@ -4,6 +4,7 @@ import { MetaKeywordPanel } from './components/MetaKeywordPanel'
 import { PromptResults } from './components/PromptResults'
 import { SlotBoard } from './components/SlotBoard'
 import keywordCatalog from './data/keywordCatalog.json'
+import { translateMetaKeyword } from './data/metaKeywords'
 import { buildPrompt } from './lib/promptBuilder'
 import { drawSlots, filterKeywords } from './lib/slotMachine'
 import { CATEGORY_ORDER, DIFFICULTY_ORDER, type Category, type Difficulty, type KeywordItem } from './types'
@@ -16,7 +17,7 @@ function App() {
   const [difficulty, setDifficulty] = useState<Difficulty | '전체'>('전체')
   const [slots, setSlots] = useState<KeywordItem[]>(() => drawSlots(catalog))
   const [selected, setSelected] = useState<KeywordItem[]>([])
-  const [selectedMeta, setSelectedMeta] = useState<string[]>([])
+  const [metaByKeyword, setMetaByKeyword] = useState<Record<string, string[]>>({})
   const [isRolling, setIsRolling] = useState(false)
   const [notice, setNotice] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
@@ -30,15 +31,28 @@ function App() {
     [],
   )
   const activeKeyword = selected.at(-1)
+  const activeMeta = activeKeyword ? metaByKeyword[activeKeyword.keyword] ?? [] : []
+  const allMeta = useMemo(
+    () => selected.flatMap((item) => metaByKeyword[item.keyword] ?? []),
+    [selected, metaByKeyword],
+  )
+  const allMetaEnglish = useMemo(
+    () => selected.flatMap((item) => (metaByKeyword[item.keyword] ?? [])
+      .map((keyword) => translateMetaKeyword(item.category, keyword))),
+    [selected, metaByKeyword],
+  )
   const prompt = useMemo(
     () => buildPrompt({
       primaryKeyword: activeKeyword?.keyword,
+      primaryKeywordEnglish: activeKeyword?.englishKeyword,
       selectedKeywords: selected.map((item) => item.keyword),
-      metaKeywords: selectedMeta,
+      selectedKeywordsEnglish: selected.map((item) => item.englishKeyword),
+      metaKeywords: allMeta,
+      metaKeywordsEnglish: allMetaEnglish,
       category: activeKeyword?.category,
-      difficulty,
+      difficulty: activeKeyword?.difficulty ?? '보통',
     }),
-    [activeKeyword, selected, selectedMeta, difficulty],
+    [activeKeyword, selected, allMeta, allMetaEnglish],
   )
 
   const spin = () => {
@@ -49,7 +63,7 @@ function App() {
     }
     setIsRolling(true)
     setSelected([])
-    setSelectedMeta([])
+    setMetaByKeyword({})
     setNotice('슬롯이 멈춘 뒤 마음에 드는 소재를 최대 3개까지 골라보세요.')
 
     let tick = 0
@@ -70,6 +84,10 @@ function App() {
     const existing = selected.find((candidate) => candidate.keyword === item.keyword)
     if (existing) {
       setSelected((current) => current.filter((candidate) => candidate.keyword !== item.keyword))
+      setMetaByKeyword((current) => {
+        const { [item.keyword]: _removed, ...remaining } = current
+        return remaining
+      })
       setNotice('소재 선택을 해제했습니다.')
       return
     }
@@ -78,18 +96,32 @@ function App() {
       return
     }
     setSelected((current) => [...current, item])
-    setSelectedMeta([])
-    setNotice(`“${item.keyword}”을(를) 선택했습니다. 아래에서 장면 요소를 더해보세요.`)
+    setMetaByKeyword((current) => ({ ...current, [item.keyword]: current[item.keyword] ?? [] }))
+    setNotice(`“${item.keyword}”을(를) 선택했습니다. 아래에서 이 소재의 장면 요소를 더해보세요.`)
   }
 
   const toggleMetaKeyword = (keyword: string) => {
-    setSelectedMeta((current) => current.includes(keyword)
-      ? current.filter((item) => item !== keyword)
-      : [...current, keyword])
+    if (!activeKeyword) return
+    setMetaByKeyword((current) => {
+      const currentMeta = current[activeKeyword.keyword] ?? []
+      return {
+        ...current,
+        [activeKeyword.keyword]: currentMeta.includes(keyword)
+          ? currentMeta.filter((item) => item !== keyword)
+          : [...currentMeta, keyword],
+      }
+    })
   }
 
   const addMetaKeyword = (keyword: string) => {
-    setSelectedMeta((current) => current.includes(keyword) ? current : [...current, keyword])
+    if (!activeKeyword) return
+    setMetaByKeyword((current) => {
+      const currentMeta = current[activeKeyword.keyword] ?? []
+      return {
+        ...current,
+        [activeKeyword.keyword]: currentMeta.includes(keyword) ? currentMeta : [...currentMeta, keyword],
+      }
+    })
   }
 
   const copyText = (id: string, value: string) => {
@@ -146,7 +178,7 @@ function App() {
         <div className="control-title">
           <p className="eyebrow">STEP 01 · SET THE REEL</p>
           <h2>어떤 그림 소재를 찾고 있나요?</h2>
-          <p>카테고리와 난이도를 좁힐수록 원하는 소재에 가까워집니다.</p>
+          <p>카테고리와 난이도를 좁힐수록 원하는 소재에 가까워집니다. 후보가 25개보다 적어도 5×5 슬롯을 유지하도록 일부 소재가 반복 표시될 수 있습니다.</p>
         </div>
         <div className="filters">
           <FilterChips label="카테고리" options={CATEGORY_ORDER} value={category} onChange={setCategory} counts={categoryCounts} />
@@ -192,7 +224,7 @@ function App() {
       <section className="builder-section">
         <MetaKeywordPanel
           activeKeyword={activeKeyword}
-          selectedMeta={selectedMeta}
+          selectedMeta={activeMeta}
           onToggle={toggleMetaKeyword}
           onAdd={addMetaKeyword}
         />

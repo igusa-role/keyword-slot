@@ -25,20 +25,20 @@ function pickWeighted(items: KeywordItem[]): KeywordItem {
 
 export function drawSlots(pool: KeywordItem[], amount = 25): KeywordItem[] {
   if (pool.length === 0) return []
-  const source = [...pool]
-  const result: KeywordItem[] = []
 
-  while (result.length < amount && source.length > 0) {
-    const picked = pickWeighted(source)
+  const uniquePool = [...pool]
+  const result: KeywordItem[] = []
+  while (result.length < amount && uniquePool.length > 0) {
+    const picked = pickWeighted(uniquePool)
     result.push(picked)
-    source.splice(source.findIndex((item) => item.keyword === picked.keyword), 1)
+    uniquePool.splice(uniquePool.findIndex((item) => item.keyword === picked.keyword), 1)
+  }
+
+  // A narrow filter can contain fewer than 25 records. Repeat weighted picks in
+  // that case so the slot board always remains a complete 5×5 machine.
+  while (result.length < amount) {
+    result.push(pickWeighted(pool))
   }
 
   return result
-}
-
-export function categorySales(catalog: KeywordItem[], category: Category): number {
-  return catalog
-    .filter((item) => item.category === category)
-    .reduce((total, item) => total + item.salesCount, 0)
 }

@@ -144,8 +144,14 @@ footer { max-width: 1480px; margin: 0 auto; padding: 20px 44px 30px; color: #747
   .workspace { padding: 34px 20px; }
   .slot-stage { padding: 17px; }
   .slot-stage-header h2 { font-size: 18px; }
-  .slot-grid { grid-template-columns: repeat(2, 1fr); }
-  .slot-card { min-height: 110px; }
+  .slot-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+  .slot-card { min-height: 106px; padding: 7px 5px; }
+  .slot-number { font-size: 8px; }
+  .slot-card strong { margin-top: 6px; font-size: 10px; line-height: 1.25; overflow-wrap: anywhere; }
+  .slot-meta { margin-top: 9px; }
+  .slot-meta em { display: none; }
+  .slot-meta b { margin-left: auto; font-size: 7px; }
+  .slot-sales { font-size: 7px; line-height: 1.2; }
   .builder-section { padding: 0 20px 48px; }
   .work-panel, .prompt-panel { padding: 22px 18px; }
   .panel-header h2 { font-size: 20px; }
