@@ -141,7 +141,7 @@
   },
   {
     "keyword": "2026년",
-    "salesCount": 4,
+    "salesCount": 5,
     "category": "기념일·시즌",
     "difficulty": "쉬움",
     "englishKeyword": "year 2026"
@@ -308,6 +308,20 @@
     "englishKeyword": "AI"
   },
   {
+    "keyword": "autumn",
+    "salesCount": 1,
+    "category": "기념일·시즌",
+    "difficulty": "쉬움",
+    "englishKeyword": "autumn"
+  },
+  {
+    "keyword": "cctv",
+    "salesCount": 1,
+    "category": "건강·안전",
+    "difficulty": "보통",
+    "englishKeyword": "CCTV"
+  },
+  {
     "keyword": "Dday",
     "salesCount": 2,
     "category": "기념일·시즌",
@@ -322,11 +336,25 @@
     "englishKeyword": "ESG"
   },
   {
+    "keyword": "esg",
+    "salesCount": 2,
+    "category": "비즈니스·금융",
+    "difficulty": "어려움",
+    "englishKeyword": "ESG"
+  },
+  {
     "keyword": "ETF",
     "salesCount": 1,
     "category": "비즈니스·금융",
     "difficulty": "어려움",
     "englishKeyword": "ETF"
+  },
+  {
+    "keyword": "finish 라인",
+    "salesCount": 1,
+    "category": "문화·취미",
+    "difficulty": "보통",
+    "englishKeyword": "finish line"
   },
   {
     "keyword": "GOAL",
@@ -343,11 +371,25 @@
     "englishKeyword": "hot"
   },
   {
+    "keyword": "may",
+    "salesCount": 1,
+    "category": "기념일·시즌",
+    "difficulty": "쉬움",
+    "englishKeyword": "May"
+  },
+  {
     "keyword": "New",
     "salesCount": 1,
     "category": "장식·추상",
     "difficulty": "쉬움",
     "englishKeyword": "new"
+  },
+  {
+    "keyword": "omr카드",
+    "salesCount": 1,
+    "category": "교육·사무",
+    "difficulty": "보통",
+    "englishKeyword": "OMR card"
   },
   {
     "keyword": "O표시",
@@ -362,76 +404,6 @@
     "category": "건강·안전",
     "difficulty": "보통",
     "englishKeyword": "O blood pack"
-  },
-  {
-    "keyword": "VS",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "쉬움",
-    "englishKeyword": "vs"
-  },
-  {
-    "keyword": "X표시",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "쉬움",
-    "englishKeyword": "X mark"
-  },
-  {
-    "keyword": "ZZZ",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "쉬움",
-    "englishKeyword": "ZZZ"
-  },
-  {
-    "keyword": "Zzz",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "쉬움",
-    "englishKeyword": "Zzz"
-  },
-  {
-    "keyword": "autumn",
-    "salesCount": 1,
-    "category": "기념일·시즌",
-    "difficulty": "쉬움",
-    "englishKeyword": "autumn"
-  },
-  {
-    "keyword": "cctv",
-    "salesCount": 1,
-    "category": "건강·안전",
-    "difficulty": "보통",
-    "englishKeyword": "CCTV"
-  },
-  {
-    "keyword": "esg",
-    "salesCount": 2,
-    "category": "비즈니스·금융",
-    "difficulty": "어려움",
-    "englishKeyword": "ESG"
-  },
-  {
-    "keyword": "finish 라인",
-    "salesCount": 1,
-    "category": "문화·취미",
-    "difficulty": "보통",
-    "englishKeyword": "finish line"
-  },
-  {
-    "keyword": "may",
-    "salesCount": 1,
-    "category": "기념일·시즌",
-    "difficulty": "쉬움",
-    "englishKeyword": "May"
-  },
-  {
-    "keyword": "omr카드",
-    "salesCount": 1,
-    "category": "교육·사무",
-    "difficulty": "보통",
-    "englishKeyword": "OMR card"
   },
   {
     "keyword": "pass",
@@ -462,6 +434,13 @@
     "englishKeyword": "VIP"
   },
   {
+    "keyword": "VS",
+    "salesCount": 1,
+    "category": "장식·추상",
+    "difficulty": "쉬움",
+    "englishKeyword": "vs"
+  },
+  {
     "keyword": "winter",
     "salesCount": 1,
     "category": "기념일·시즌",
@@ -474,6 +453,27 @@
     "category": "기념일·시즌",
     "difficulty": "보통",
     "englishKeyword": "winter calligraphy"
+  },
+  {
+    "keyword": "X표시",
+    "salesCount": 1,
+    "category": "장식·추상",
+    "difficulty": "쉬움",
+    "englishKeyword": "X mark"
+  },
+  {
+    "keyword": "ZZZ",
+    "salesCount": 1,
+    "category": "장식·추상",
+    "difficulty": "쉬움",
+    "englishKeyword": "ZZZ"
+  },
+  {
+    "keyword": "Zzz",
+    "salesCount": 1,
+    "category": "장식·추상",
+    "difficulty": "쉬움",
+    "englishKeyword": "Zzz"
   },
   {
     "keyword": "zzz",
@@ -967,7 +967,7 @@
   },
   {
     "keyword": "감사",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "장식·추상",
     "difficulty": "쉬움",
     "englishKeyword": "thanks"
@@ -1520,7 +1520,7 @@
   },
   {
     "keyword": "결승선",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "문화·취미",
     "difficulty": "보통",
     "englishKeyword": "finish line"
@@ -1842,7 +1842,7 @@
   },
   {
     "keyword": "고서",
-    "salesCount": 10,
+    "salesCount": 11,
     "category": "문화·취미",
     "difficulty": "보통",
     "englishKeyword": "ancient book"
@@ -2346,7 +2346,7 @@
   },
   {
     "keyword": "구급상자",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "건강·안전",
     "difficulty": "보통",
     "englishKeyword": "first aid kit"
@@ -2892,7 +2892,7 @@
   },
   {
     "keyword": "기차",
-    "salesCount": 30,
+    "salesCount": 31,
     "category": "교통·여행",
     "difficulty": "쉬움",
     "englishKeyword": "train"
@@ -3109,7 +3109,7 @@
   },
   {
     "keyword": "꽃",
-    "salesCount": 70,
+    "salesCount": 71,
     "category": "자연·식물",
     "difficulty": "쉬움",
     "englishKeyword": "flower"
@@ -3403,7 +3403,7 @@
   },
   {
     "keyword": "나비",
-    "salesCount": 27,
+    "salesCount": 28,
     "category": "동물·곤충",
     "difficulty": "쉬움",
     "englishKeyword": "butterfly"
@@ -3459,7 +3459,7 @@
   },
   {
     "keyword": "낙엽",
-    "salesCount": 42,
+    "salesCount": 43,
     "category": "자연·식물",
     "difficulty": "쉬움",
     "englishKeyword": "fallen leaves"
@@ -4900,6 +4900,13 @@
     "englishKeyword": "money"
   },
   {
+    "keyword": "돈나무",
+    "salesCount": 1,
+    "category": "자연·식물",
+    "difficulty": "쉬움",
+    "englishKeyword": "money tree plant"
+  },
+  {
     "keyword": "돈다발",
     "salesCount": 1,
     "category": "비즈니스·금융",
@@ -5265,10 +5272,10 @@
   },
   {
     "keyword": "뒤집게",
-    "salesCount": 1,
-    "category": "사람·생활",
+    "salesCount": 2,
+    "category": "음식·음료",
     "difficulty": "쉬움",
-    "englishKeyword": "tongs"
+    "englishKeyword": "spatula"
   },
   {
     "keyword": "뒤집힌우산",
@@ -5580,17 +5587,10 @@
   },
   {
     "keyword": "라면",
-    "salesCount": 3,
+    "salesCount": 4,
     "category": "음식·음료",
     "difficulty": "쉬움",
     "englishKeyword": "instant noodles"
-  },
-  {
-    "keyword": "라면 구급상다 책읽는아이",
-    "salesCount": 1,
-    "category": "교육·사무",
-    "difficulty": "어려움",
-    "englishKeyword": "ramen first aid reading child"
   },
   {
     "keyword": "라바콘",
@@ -5654,6 +5654,13 @@
     "category": "사람·생활",
     "difficulty": "보통",
     "englishKeyword": "rug"
+  },
+  {
+    "keyword": "레드와인",
+    "salesCount": 1,
+    "category": "음식·음료",
+    "difficulty": "쉬움",
+    "englishKeyword": "red wine"
   },
   {
     "keyword": "레드키위",
@@ -5923,17 +5930,10 @@
   },
   {
     "keyword": "마이크",
-    "salesCount": 36,
+    "salesCount": 37,
     "category": "문화·취미",
     "difficulty": "보통",
     "englishKeyword": "microphone"
-  },
-  {
-    "keyword": "마이크 북 기차 나비 운동장 바톤 꽃 집 오솔길 뒤집게 팝콘 영화표 열기구 왕관 서책 고서 은행나무 테니스공 악보 탬버린",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "어려움",
-    "englishKeyword": "microphone book train butterfly playground baton flower house path clip popcorn movie ticket hot air balloon crown book old book ginkgo tennis ball sheet music tambourine"
   },
   {
     "keyword": "마카로니",
@@ -6581,7 +6581,7 @@
   },
   {
     "keyword": "목표달성",
-    "salesCount": 9,
+    "salesCount": 10,
     "category": "장식·추상",
     "difficulty": "보통",
     "englishKeyword": "goal achievement"
@@ -6672,7 +6672,7 @@
   },
   {
     "keyword": "무지개",
-    "salesCount": 9,
+    "salesCount": 10,
     "category": "자연·식물",
     "difficulty": "보통",
     "englishKeyword": "rainbow"
@@ -6837,6 +6837,13 @@
     "category": "장식·추상",
     "difficulty": "보통",
     "englishKeyword": "water droplet character"
+  },
+  {
+    "keyword": "물병",
+    "salesCount": 1,
+    "category": "사람·생활",
+    "difficulty": "쉬움",
+    "englishKeyword": "plastic water bottle"
   },
   {
     "keyword": "물뿌리개",
@@ -7246,17 +7253,10 @@
   },
   {
     "keyword": "바람",
-    "salesCount": 18,
+    "salesCount": 20,
     "category": "자연·식물",
     "difficulty": "쉬움",
     "englishKeyword": "wind"
-  },
-  {
-    "keyword": "바람 파프리카 무지개",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "어려움",
-    "englishKeyword": "wind paprika rainbow"
   },
   {
     "keyword": "바람개비",
@@ -7344,7 +7344,7 @@
   },
   {
     "keyword": "바톤",
-    "salesCount": 5,
+    "salesCount": 6,
     "category": "문화·취미",
     "difficulty": "쉬움",
     "englishKeyword": "baton"
@@ -7610,17 +7610,10 @@
   },
   {
     "keyword": "배구 스파이크",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "문화·취미",
     "difficulty": "어려움",
     "englishKeyword": "volleyball spike"
-  },
-  {
-    "keyword": "배구 스파이크 집",
-    "salesCount": 1,
-    "category": "문화·취미",
-    "difficulty": "어려움",
-    "englishKeyword": "volleyball spike home"
   },
   {
     "keyword": "배구공",
@@ -8562,7 +8555,7 @@
   },
   {
     "keyword": "북",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "문화·취미",
     "difficulty": "쉬움",
     "englishKeyword": "drum"
@@ -9934,10 +9927,10 @@
   },
   {
     "keyword": "서책",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "교육·사무",
     "difficulty": "보통",
-    "englishKeyword": "book stack"
+    "englishKeyword": "bound book"
   },
   {
     "keyword": "서핑",
@@ -10554,6 +10547,13 @@
     "category": "건강·안전",
     "difficulty": "쉬움",
     "englishKeyword": "fire hydrant"
+  },
+  {
+    "keyword": "손",
+    "salesCount": 1,
+    "category": "사람·생활",
+    "difficulty": "쉬움",
+    "englishKeyword": "human hand"
   },
   {
     "keyword": "손거울",
@@ -11369,7 +11369,7 @@
   },
   {
     "keyword": "습도",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "자연·식물",
     "difficulty": "보통",
     "englishKeyword": "humidity"
@@ -11681,6 +11681,13 @@
     "category": "종교·전통",
     "difficulty": "보통",
     "englishKeyword": "cross love"
+  },
+  {
+    "keyword": "싱가포르",
+    "salesCount": 1,
+    "category": "교통·여행",
+    "difficulty": "보통",
+    "englishKeyword": "Singapore"
   },
   {
     "keyword": "싱잉볼",
@@ -12118,8 +12125,8 @@
   },
   {
     "keyword": "악보",
-    "salesCount": 4,
-    "category": "교육·사무",
+    "salesCount": 5,
+    "category": "문화·취미",
     "difficulty": "보통",
     "englishKeyword": "sheet music"
   },
@@ -13028,7 +13035,7 @@
   },
   {
     "keyword": "열기구",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "교통·여행",
     "difficulty": "보통",
     "englishKeyword": "hot air balloon"
@@ -13238,7 +13245,7 @@
   },
   {
     "keyword": "영화표",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "문화·취미",
     "difficulty": "쉬움",
     "englishKeyword": "movie ticket"
@@ -13427,7 +13434,7 @@
   },
   {
     "keyword": "오솔길",
-    "salesCount": 7,
+    "salesCount": 8,
     "category": "자연·식물",
     "difficulty": "보통",
     "englishKeyword": "forest path"
@@ -13609,17 +13616,17 @@
   },
   {
     "keyword": "와인",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "음식·음료",
     "difficulty": "쉬움",
     "englishKeyword": "wine"
   },
   {
-    "keyword": "와인 레드와인 와인글씨",
+    "keyword": "와인글씨",
     "salesCount": 1,
-    "category": "음식·음료",
+    "category": "장식·추상",
     "difficulty": "보통",
-    "englishKeyword": "wine red wine lettering"
+    "englishKeyword": "wine script lettering"
   },
   {
     "keyword": "와인병",
@@ -13658,7 +13665,7 @@
   },
   {
     "keyword": "왕관",
-    "salesCount": 3,
+    "salesCount": 4,
     "category": "장식·추상",
     "difficulty": "보통",
     "englishKeyword": "crown"
@@ -13882,10 +13889,10 @@
   },
   {
     "keyword": "운동장",
-    "salesCount": 2,
-    "category": "교육·사무",
+    "salesCount": 3,
+    "category": "문화·취미",
     "difficulty": "보통",
-    "englishKeyword": "playground"
+    "englishKeyword": "sports field"
   },
   {
     "keyword": "운동장라인",
@@ -13917,17 +13924,10 @@
   },
   {
     "keyword": "울타리",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "자연·식물",
     "difficulty": "보통",
     "englishKeyword": "fence"
-  },
-  {
-    "keyword": "울타리 낙엽 컨페티",
-    "salesCount": 1,
-    "category": "자연·식물",
-    "difficulty": "보통",
-    "englishKeyword": "fence with leaves confetti"
   },
   {
     "keyword": "움직이는 애벌레",
@@ -14014,11 +14014,11 @@
     "englishKeyword": "recruiting children"
   },
   {
-    "keyword": "원플원 2026년 목표달성 습도",
+    "keyword": "원플원",
     "salesCount": 1,
     "category": "비즈니스·금융",
-    "difficulty": "어려움",
-    "englishKeyword": "one-plus-one 2026 goal achievement humidity"
+    "difficulty": "보통",
+    "englishKeyword": "buy one get one sign"
   },
   {
     "keyword": "원피스",
@@ -14162,10 +14162,10 @@
   },
   {
     "keyword": "유심",
-    "salesCount": 22,
+    "salesCount": 23,
     "category": "비즈니스·금융",
-    "difficulty": "보통",
-    "englishKeyword": "SIM registration"
+    "difficulty": "쉬움",
+    "englishKeyword": "SIM card"
   },
   {
     "keyword": "유심칩",
@@ -14295,7 +14295,7 @@
   },
   {
     "keyword": "은행나무",
-    "salesCount": 7,
+    "salesCount": 8,
     "category": "자연·식물",
     "difficulty": "쉬움",
     "englishKeyword": "ginkgo tree"
@@ -14518,11 +14518,11 @@
     "englishKeyword": "carbon dioxide"
   },
   {
-    "keyword": "이자오름 주식 돈나무",
+    "keyword": "이자오름",
     "salesCount": 1,
     "category": "비즈니스·금융",
-    "difficulty": "보통",
-    "englishKeyword": "interest growth stock money tree"
+    "difficulty": "어려움",
+    "englishKeyword": "rising interest rate graph"
   },
   {
     "keyword": "이젤",
@@ -15884,7 +15884,7 @@
   },
   {
     "keyword": "주식",
-    "salesCount": 1,
+    "salesCount": 2,
     "category": "비즈니스·금융",
     "difficulty": "어려움",
     "englishKeyword": "stocks"
@@ -16276,7 +16276,7 @@
   },
   {
     "keyword": "집",
-    "salesCount": 19,
+    "salesCount": 21,
     "category": "사람·생활",
     "difficulty": "쉬움",
     "englishKeyword": "house"
@@ -16448,6 +16448,13 @@
     "category": "교육·사무",
     "difficulty": "쉬움",
     "englishKeyword": "book"
+  },
+  {
+    "keyword": "책 읽는 아이",
+    "salesCount": 1,
+    "category": "교육·사무",
+    "difficulty": "보통",
+    "englishKeyword": "child reading a book"
   },
   {
     "keyword": "책 캐릭터",
@@ -17718,7 +17725,7 @@
   },
   {
     "keyword": "컨페티",
-    "salesCount": 7,
+    "salesCount": 8,
     "category": "장식·추상",
     "difficulty": "쉬움",
     "englishKeyword": "confetti"
@@ -18145,17 +18152,10 @@
   },
   {
     "keyword": "크리스마스트리",
-    "salesCount": 5,
+    "salesCount": 6,
     "category": "기념일·시즌",
     "difficulty": "쉬움",
     "englishKeyword": "Christmas tree"
-  },
-  {
-    "keyword": "크리스마스트리 감사 털모자",
-    "salesCount": 1,
-    "category": "기념일·시즌",
-    "difficulty": "보통",
-    "englishKeyword": "Christmas tree with Santa hat"
   },
   {
     "keyword": "크림",
@@ -18390,7 +18390,7 @@
   },
   {
     "keyword": "탬버린",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "문화·취미",
     "difficulty": "쉬움",
     "englishKeyword": "tambourine"
@@ -18411,7 +18411,7 @@
   },
   {
     "keyword": "털모자",
-    "salesCount": 8,
+    "salesCount": 9,
     "category": "사람·생활",
     "difficulty": "쉬움",
     "englishKeyword": "fur hat"
@@ -18464,6 +18464,13 @@
     "category": "자연·식물",
     "difficulty": "보통",
     "englishKeyword": "vegetable garden"
+  },
+  {
+    "keyword": "테니스공",
+    "salesCount": 1,
+    "category": "문화·취미",
+    "difficulty": "쉬움",
+    "englishKeyword": "tennis ball"
   },
   {
     "keyword": "테니스라켓",
@@ -18852,17 +18859,10 @@
   },
   {
     "keyword": "파인애플",
-    "salesCount": 2,
+    "salesCount": 3,
     "category": "음식·음료",
     "difficulty": "쉬움",
     "englishKeyword": "pineapple"
-  },
-  {
-    "keyword": "파인애플 결승선 물병",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "보통",
-    "englishKeyword": "pineapple finish line water bottle"
   },
   {
     "keyword": "파킹",
@@ -18880,7 +18880,7 @@
   },
   {
     "keyword": "파프리카",
-    "salesCount": 8,
+    "salesCount": 10,
     "category": "음식·음료",
     "difficulty": "쉬움",
     "englishKeyword": "paprika"
@@ -18908,7 +18908,7 @@
   },
   {
     "keyword": "팝콘",
-    "salesCount": 42,
+    "salesCount": 43,
     "category": "음식·음료",
     "difficulty": "쉬움",
     "englishKeyword": "popcorn"
@@ -19559,7 +19559,7 @@
   },
   {
     "keyword": "하트",
-    "salesCount": 47,
+    "salesCount": 48,
     "category": "장식·추상",
     "difficulty": "쉬움",
     "englishKeyword": "heart"
@@ -19570,13 +19570,6 @@
     "category": "장식·추상",
     "difficulty": "쉬움",
     "englishKeyword": "heart design"
-  },
-  {
-    "keyword": "하트 싱가포르 유심 바람 손 파프리카",
-    "salesCount": 1,
-    "category": "장식·추상",
-    "difficulty": "어려움",
-    "englishKeyword": "heart Singapore USIM wind hand paprika"
   },
   {
     "keyword": "하트 애니",

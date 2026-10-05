@@ -11,6 +11,11 @@ import { CATEGORY_ORDER, DIFFICULTY_ORDER, type Category, type Difficulty, type 
 
 const catalog = keywordCatalog as KeywordItem[]
 const MAX_SELECTED = 3
+const catalogStats = {
+  keywords: catalog.length,
+  categories: new Set(catalog.map((item) => item.category)).size,
+  salesMentions: catalog.reduce((total, item) => total + item.salesCount, 0),
+}
 
 function App() {
   const [category, setCategory] = useState<Category | '전체'>('전체')
@@ -159,9 +164,9 @@ function App() {
           <h1>오늘의 소재를<br /><em>돌려보세요.</em></h1>
           <p>실제로 판매된 키워드를 슬롯으로 뽑고, 나만의 메타키워드로 장면을 조립해 따라 그릴 밑그림 프롬프트를 만듭니다.</p>
           <div className="hero-stats">
-            <span><b>3,010</b> 고유 키워드</span>
-            <span><b>12</b> 소재 카테고리</span>
-            <span><b>8,691</b> 판매 언급</span>
+            <span><b>{catalogStats.keywords.toLocaleString()}</b> 고유 키워드</span>
+            <span><b>{catalogStats.categories}</b> 소재 카테고리</span>
+            <span><b>{catalogStats.salesMentions.toLocaleString()}</b> 판매 언급</span>
           </div>
         </div>
         <aside className="hero-card">
