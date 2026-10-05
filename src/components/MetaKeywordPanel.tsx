@@ -21,7 +21,7 @@ export function MetaKeywordPanel({ activeKeyword, selectedMeta, onToggle, onAdd 
   }
 
   return (
-    <section className="work-panel meta-panel">
+    <section className="work-panel meta-panel" id="meta-keywords">
       <div className="panel-header">
         <div>
           <p className="eyebrow">STEP 02 · META KEYWORDS</p>

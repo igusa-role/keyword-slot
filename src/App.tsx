@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { FilterChips } from './components/FilterChips'
+import { FlowerMascot } from './components/FlowerMascot'
 import { MetaKeywordPanel } from './components/MetaKeywordPanel'
 import { PromptResults } from './components/PromptResults'
 import { SlotBoard } from './components/SlotBoard'
@@ -69,7 +70,7 @@ function App() {
     setIsRolling(true)
     setSelected([])
     setMetaByKeyword({})
-    setNotice('슬롯이 멈춘 뒤 마음에 드는 소재를 최대 3개까지 골라보세요.')
+    setNotice('릴이 멈추면 마음에 드는 소재를 최대 3개까지 골라보세요.')
 
     let tick = 0
     const interval = window.setInterval(() => {
@@ -149,97 +150,121 @@ function App() {
   }
 
   return (
-    <main>
-      <header className="topbar">
-        <a className="brand" href="#top" aria-label="키워드 슬롯 홈">
+    <main className="app-shell">
+      <aside className="studio-rail" aria-label="키워드 슬롯 탐색">
+        <a className="brand rail-brand" href="#top" aria-label="키워드 슬롯 홈">
           <span className="brand-mark"><i /> <i /> <i /></span>
-          <span>키워드 슬롯</span>
+          <span><b>키워드</b> 슬롯</span>
         </a>
-        <div className="topbar-note">SALES-BASED IDEA GENERATOR <b>•</b> BETA 01</div>
-      </header>
+        <div className="rail-copy">
+          <p className="eyebrow">CREATIVE TOOL</p>
+          <h2>그림보다 먼저,<br />장면을 고르세요.</h2>
+          <p>판매된 키워드에서 따라 그릴 수 있는 나만의 밑그림 프롬프트를 만듭니다.</p>
+        </div>
+        <nav className="rail-nav" aria-label="제작 단계">
+          <a className="active" href="#slot-board"><span>✦</span> 키워드 돌리기</a>
+          <a href="#meta-keywords"><span>✎</span> 장면 요소 더하기</a>
+          <a href="#prompt-output"><span>▦</span> 프롬프트 복사</a>
+        </nav>
+        <div className="rail-tip">
+          <span>☀</span>
+          <div><b>작은 팁</b><p>소재는 2–3개만 골라야 장면이 또렷해져요.</p></div>
+        </div>
+      </aside>
 
-      <section className="hero" id="top">
-        <div className="hero-copy">
-          <p className="eyebrow lime">판매 데이터에서 출발하는 그림 아이디어</p>
-          <h1>오늘의 소재를<br /><em>돌려보세요.</em></h1>
-          <p>실제로 판매된 키워드를 슬롯으로 뽑고, 나만의 메타키워드로 장면을 조립해 따라 그릴 밑그림 프롬프트를 만듭니다.</p>
-          <div className="hero-stats">
-            <span><b>{catalogStats.keywords.toLocaleString()}</b> 고유 키워드</span>
-            <span><b>{catalogStats.categories}</b> 소재 카테고리</span>
-            <span><b>{catalogStats.salesMentions.toLocaleString()}</b> 판매 언급</span>
-          </div>
-        </div>
-        <aside className="hero-card">
-          <p className="eyebrow">HOW IT WORKS</p>
-          <ol>
-            <li><b>01</b><span>필터를 골라 25개 소재를 돌립니다.</span></li>
-            <li><b>02</b><span>마음에 드는 소재와 장면 요소를 고릅니다.</span></li>
-            <li><b>03</b><span>반투명 벡터 밑그림 프롬프트를 복사합니다.</span></li>
-          </ol>
-        </aside>
-      </section>
+      <div className="app-content">
+        <header className="topbar">
+          <a className="brand mobile-brand" href="#top" aria-label="키워드 슬롯 홈">
+            <span className="brand-mark"><i /> <i /> <i /></span>
+            <span>키워드 슬롯</span>
+          </a>
+          <div className="breadcrumb">OFFLINE CREATIVE TOOL <b>›</b> <strong>키워드 프롬프트</strong></div>
+          <div className="topbar-note">✦ 브라우저 안에서 바로 만들어요</div>
+        </header>
 
-      <section className="control-deck" aria-label="슬롯 조건 설정">
-        <div className="control-title">
-          <p className="eyebrow">STEP 01 · SET THE REEL</p>
-          <h2>어떤 그림 소재를 찾고 있나요?</h2>
-          <p>카테고리와 난이도를 좁힐수록 원하는 소재에 가까워집니다. 후보가 25개보다 적어도 5×5 슬롯을 유지하도록 일부 소재가 반복 표시될 수 있습니다.</p>
-        </div>
-        <div className="filters">
-          <FilterChips label="카테고리" options={CATEGORY_ORDER} value={category} onChange={setCategory} counts={categoryCounts} />
-          <FilterChips label="드로잉 난이도" options={DIFFICULTY_ORDER} value={difficulty} onChange={setDifficulty} />
-          <div className="spin-row">
-            <span>{filteredCatalog.length.toLocaleString()}개 후보</span>
-            <button className="spin-button" onClick={spin} disabled={isRolling}>
-              <span>{isRolling ? 'REELING…' : 'SPIN 25'}</span>
-              <b>↻</b>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section className="workspace">
-        <div className="workspace-main">
-          <SlotBoard
-            slots={slots}
-            selectedKeywords={selected.map((item) => item.keyword)}
-            isRolling={isRolling}
-            onToggle={toggleKeyword}
-          />
-          {notice ? <p className="notice" role="status">{notice}</p> : null}
-        </div>
-        <aside className="selection-dock">
-          <p className="eyebrow">YOUR PICKS · {selected.length}/{MAX_SELECTED}</p>
-          {selected.length ? (
-            <div className="selected-list">
-              {selected.map((item, index) => (
-                <button key={item.keyword} onClick={() => toggleKeyword(item)} className="selected-chip" title="선택 해제">
-                  <span>{index + 1}</span>{item.keyword}<b>×</b>
-                </button>
-              ))}
+        <section className="hero" id="top">
+          <div className="hero-copy">
+            <p className="eyebrow blue">KEYWORD TO SKETCH</p>
+            <h1>키워드를 조합해<br /><em>그리고 싶은 장면</em>을<br />먼저 만나보세요.</h1>
+            <p>판매 데이터에서 찾은 그림 소재를 돌리고, 장면 요소를 더해, 반투명 벡터 밑그림 프롬프트로 바로 완성합니다.</p>
+            <div className="hero-stats">
+              <span><b>{catalogStats.keywords.toLocaleString()}</b> 고유 키워드</span>
+              <span><b>{catalogStats.categories}</b> 소재 카테고리</span>
+              <span><b>{catalogStats.salesMentions.toLocaleString()}</b> 판매 언급</span>
             </div>
-          ) : <p className="selection-empty">아직 선택한 소재가 없습니다.<br />슬롯 카드를 눌러 보세요.</p>}
-          <div className="data-source">
-            <span>DATA NOTE</span>
-            <p>판매 언급 횟수가 많을수록 슬롯에서 나올 확률이 조금 더 높습니다.</p>
           </div>
-        </aside>
-      </section>
+          <aside className="hero-card" aria-label="플라워 마스코트 안내">
+            <div className="hero-orbit orbit-one">▦ PLAN</div>
+            <div className="hero-orbit orbit-two">● COLOR</div>
+            <div className="hero-orbit orbit-three">✎ TRACE</div>
+            <FlowerMascot className="hero-mascot" />
+            <div className="hero-card-copy"><span>CREATOR POP PALETTE</span><b>꽃 친구와 함께<br />아이디어를 피워요.</b></div>
+          </aside>
+        </section>
 
-      <section className="builder-section">
-        <MetaKeywordPanel
-          activeKeyword={activeKeyword}
-          selectedMeta={activeMeta}
-          onToggle={toggleMetaKeyword}
-          onAdd={addMetaKeyword}
-        />
-        <PromptResults output={prompt} copiedId={copiedId} onCopy={copyText} />
-      </section>
+        <section className="control-deck" aria-label="슬롯 조건 설정">
+          <div className="control-title">
+            <p className="eyebrow">01 · IDEA BRIEF</p>
+            <h2>어떤 소재를<br />찾고 있나요?</h2>
+            <p>카테고리와 난이도를 좁힐수록 원하는 그림 소재에 가까워집니다.</p>
+          </div>
+          <div className="filters">
+            <FilterChips label="카테고리" options={CATEGORY_ORDER} value={category} onChange={setCategory} counts={categoryCounts} />
+            <FilterChips label="드로잉 난이도" options={DIFFICULTY_ORDER} value={difficulty} onChange={setDifficulty} />
+            <div className="spin-row">
+              <span>{filteredCatalog.length.toLocaleString()}개 소재 준비됨</span>
+              <button className="spin-button" onClick={spin} disabled={isRolling}>
+                <span>{isRolling ? '키워드 조합 중…' : '키워드 25개 돌리기'}</span>
+                <b>↻</b>
+              </button>
+            </div>
+          </div>
+        </section>
 
-      <footer>
-        <span>KEYWORD SLOT / 판매 키워드 기반 창작 보조 도구</span>
-        <span>이미지는 생성하지 않으며, 프롬프트만 제공합니다.</span>
-      </footer>
+        <section className="workspace">
+          <div className="workspace-main">
+            <SlotBoard
+              slots={slots}
+              selectedKeywords={selected.map((item) => item.keyword)}
+              isRolling={isRolling}
+              onToggle={toggleKeyword}
+            />
+            {notice ? <p className="notice" role="status">✦ {notice}</p> : null}
+          </div>
+          <aside className="selection-dock">
+            <FlowerMascot className="dock-mascot" label="선택 소재 안내 플라워 마스코트" />
+            <p className="eyebrow">YOUR PICKS · {selected.length}/{MAX_SELECTED}</p>
+            {selected.length ? (
+              <div className="selected-list">
+                {selected.map((item, index) => (
+                  <button key={item.keyword} onClick={() => toggleKeyword(item)} className="selected-chip" title="선택 해제">
+                    <span>{index + 1}</span>{item.keyword}<b>×</b>
+                  </button>
+                ))}
+              </div>
+            ) : <p className="selection-empty">아직 선택한 소재가 없어요.<br />아래 카드에서 마음에 드는<br />소재를 골라보세요.</p>}
+            <div className="data-source">
+              <span>DATA NOTE</span>
+              <p>판매 언급 횟수가 많을수록 슬롯에서 나올 확률이 조금 더 높습니다.</p>
+            </div>
+          </aside>
+        </section>
+
+        <section className="builder-section">
+          <MetaKeywordPanel
+            activeKeyword={activeKeyword}
+            selectedMeta={activeMeta}
+            onToggle={toggleMetaKeyword}
+            onAdd={addMetaKeyword}
+          />
+          <PromptResults output={prompt} copiedId={copiedId} onCopy={copyText} />
+        </section>
+
+        <footer>
+          <span>KEYWORD SLOT / 판매 키워드 기반 창작 보조 도구</span>
+          <span>이미지는 생성하지 않으며, 프롬프트만 제공합니다.</span>
+        </footer>
+      </div>
     </main>
   )
 }

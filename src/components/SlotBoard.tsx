@@ -15,7 +15,7 @@ const DIFFICULTY_MARK: Record<KeywordItem['difficulty'], string> = {
 
 export function SlotBoard({ slots, selectedKeywords, isRolling, onToggle }: SlotBoardProps) {
   return (
-    <section className="slot-stage" aria-label="키워드 슬롯머신 결과">
+    <section className="slot-stage" id="slot-board" aria-label="키워드 슬롯머신 결과">
       <div className="slot-stage-header">
         <div>
           <p className="eyebrow">5 × 5 KEYWORD REELS</p>
@@ -36,6 +36,7 @@ export function SlotBoard({ slots, selectedKeywords, isRolling, onToggle }: Slot
               onClick={() => onToggle(slot)}
               disabled={isRolling}
               aria-pressed={isSelected}
+              aria-label={`${slot.keyword}, ${slot.category}, ${slot.difficulty} 난이도, 판매 언급 ${slot.salesCount}회${isSelected ? ', 선택됨' : ''}`}
             >
               <span className="slot-number">{String(index + 1).padStart(2, '0')}</span>
               <strong>{slot.keyword}</strong>

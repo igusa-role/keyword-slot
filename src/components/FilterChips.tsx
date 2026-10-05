@@ -17,7 +17,11 @@ export function FilterChips<T extends string>({
     <section className="filter-group" aria-label={label}>
       <p className="eyebrow">{label}</p>
       <div className="filter-chips">
-        <button className={value === '전체' ? 'chip active' : 'chip'} onClick={() => onChange('전체')}>
+        <button
+          className={value === '전체' ? 'chip active' : 'chip'}
+          onClick={() => onChange('전체')}
+          aria-pressed={value === '전체'}
+        >
           전체
         </button>
         {options.map((option) => (
@@ -25,6 +29,7 @@ export function FilterChips<T extends string>({
             key={option}
             className={value === option ? 'chip active' : 'chip'}
             onClick={() => onChange(option)}
+            aria-pressed={value === option}
           >
             {option}{counts?.[option] ? <span>{counts[option]}</span> : null}
           </button>
