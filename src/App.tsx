@@ -159,7 +159,7 @@ function App() {
         <div className="rail-copy">
           <p className="eyebrow">CREATIVE TOOL</p>
           <h2>그림보다 먼저,<br />장면을 고르세요.</h2>
-          <p>판매된 키워드에서 따라 그릴 수 있는 나만의 밑그림 프롬프트를 만듭니다.</p>
+          <p>판매된 키워드에서 나만의 플랫 벡터 일러스트 프롬프트를 만듭니다.</p>
         </div>
         <nav className="rail-nav" aria-label="제작 단계">
           <a className="active" href="#slot-board"><span>✦</span> 키워드 돌리기</a>
@@ -186,7 +186,7 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow blue">KEYWORD TO SKETCH</p>
             <h1>키워드를 조합해<br /><em>그리고 싶은 장면</em>을<br />먼저 만나보세요.</h1>
-            <p>판매 데이터에서 찾은 그림 소재를 돌리고, 장면 요소를 더해, 반투명 벡터 밑그림 프롬프트로 바로 완성합니다.</p>
+            <p>판매 데이터에서 찾은 그림 소재를 돌리고, 장면 요소를 더해, 귀엽고 선명한 플랫 벡터 일러스트 프롬프트로 바로 완성합니다.</p>
             <div className="hero-stats">
               <span><b>{catalogStats.keywords.toLocaleString()}</b> 고유 키워드</span>
               <span><b>{catalogStats.categories}</b> 소재 카테고리</span>
@@ -196,7 +196,7 @@ function App() {
           <aside className="hero-card" aria-label="플라워 마스코트 안내">
             <div className="hero-orbit orbit-one">▦ PLAN</div>
             <div className="hero-orbit orbit-two">● COLOR</div>
-            <div className="hero-orbit orbit-three">✎ TRACE</div>
+            <div className="hero-orbit orbit-three">✎ STICKER</div>
             <FlowerMascot className="hero-mascot" />
             <div className="hero-card-copy"><span>CREATOR POP PALETTE</span><b>꽃 친구와 함께<br />아이디어를 피워요.</b></div>
           </aside>

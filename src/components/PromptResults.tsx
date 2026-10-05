@@ -10,7 +10,7 @@ const blocks: Array<{ key: keyof PromptOutput; label: string; description: strin
   { key: 'koreanDescription', label: '한글 장면 설명', description: '장면 구성을 빠르게 점검하세요.' },
   { key: 'englishPrompt', label: '영어 이미지 생성 프롬프트', description: '외부 이미지 생성 도구에 붙여 넣으세요.', code: true },
   { key: 'negativePrompt', label: '네거티브 프롬프트', description: '복잡한 결과를 줄이는 제외 지시입니다.', code: true },
-  { key: 'settingSummary', label: '설정 요약', description: '현재 선택값과 밑그림 조건입니다.' },
+  { key: 'settingSummary', label: '설정 요약', description: '현재 선택값과 일러스트 스타일입니다.' },
 ]
 
 export function PromptResults({ output, copiedId, onCopy }: PromptResultsProps) {
@@ -18,8 +18,8 @@ export function PromptResults({ output, copiedId, onCopy }: PromptResultsProps) 
     <section className="prompt-panel" id="prompt-output">
       <div className="panel-header">
         <div>
-          <p className="eyebrow">STEP 03 · TRACE PROMPT</p>
-          <h2>따라 그릴 장면을 완성하세요</h2>
+          <p className="eyebrow">STEP 03 · ILLUSTRATION PROMPT</p>
+          <h2>플랫 벡터 일러스트를 완성하세요</h2>
         </div>
         {output ? <span className="ready-badge">READY TO COPY</span> : null}
       </div>
@@ -44,7 +44,7 @@ export function PromptResults({ output, copiedId, onCopy }: PromptResultsProps) 
         <div className="empty-prompt">
           <div className="prompt-icon">✦</div>
           <h3>선택한 소재가 아직 없습니다</h3>
-          <p>슬롯에서 소재를 고르고 메타키워드를 더하면 2D 벡터 밑그림 프롬프트가 자동으로 조립됩니다.</p>
+          <p>슬롯에서 소재를 고르고 메타키워드를 더하면 2D 플랫 벡터 일러스트 프롬프트가 자동으로 조립됩니다.</p>
         </div>
       )}
     </section>
