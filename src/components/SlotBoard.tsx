@@ -49,7 +49,7 @@ export function SlotBoard({ slots, selectedKeywords, isRolling, onToggle }: Slot
           )
         })}
       </div>
-      <p className="slot-help">카드를 눌러 최대 3개의 소재를 선택하세요. 선택한 소재는 아래 프롬프트 작업대로 이어집니다.</p>
+      <p className="slot-help">카드를 눌러 소재 하나를 선택하세요. 다른 카드를 누르면 대표 소재가 바뀌며, 이미지는 하나의 독립된 일러스트로 생성됩니다.</p>
     </section>
   )
 }

@@ -11,7 +11,7 @@ import { drawSlots, filterKeywords } from './lib/slotMachine'
 import { CATEGORY_ORDER, DIFFICULTY_ORDER, type Category, type Difficulty, type KeywordItem } from './types'
 
 const catalog = keywordCatalog as KeywordItem[]
-const MAX_SELECTED = 3
+const MAX_SELECTED = 1
 const catalogStats = {
   keywords: catalog.length,
   categories: new Set(catalog.map((item) => item.category)).size,
@@ -52,7 +52,6 @@ function App() {
       primaryKeyword: activeKeyword?.keyword,
       primaryKeywordEnglish: activeKeyword?.englishKeyword,
       selectedKeywords: selected.map((item) => item.keyword),
-      selectedKeywordsEnglish: selected.map((item) => item.englishKeyword),
       metaKeywords: allMeta,
       metaKeywordsEnglish: allMetaEnglish,
       category: activeKeyword?.category,
@@ -70,7 +69,7 @@ function App() {
     setIsRolling(true)
     setSelected([])
     setMetaByKeyword({})
-    setNotice('릴이 멈추면 마음에 드는 소재를 최대 3개까지 골라보세요.')
+      setNotice('릴이 멈추면 마음에 드는 소재 하나를 골라 독립된 일러스트로 만들어 보세요.')
 
     let tick = 0
     const interval = window.setInterval(() => {
@@ -98,12 +97,14 @@ function App() {
       return
     }
     if (selected.length >= MAX_SELECTED) {
-      setNotice(`소재는 최대 ${MAX_SELECTED}개까지 선택할 수 있습니다. 하나를 해제한 뒤 선택해 주세요.`)
+      setSelected([item])
+      setMetaByKeyword({ [item.keyword]: [] })
+      setNotice(`대표 소재를 “${item.keyword}”으로 변경했습니다. 이 소재 하나로 독립된 일러스트를 만듭니다.`)
       return
     }
     setSelected((current) => [...current, item])
     setMetaByKeyword((current) => ({ ...current, [item.keyword]: current[item.keyword] ?? [] }))
-    setNotice(`“${item.keyword}”을(를) 선택했습니다. 아래에서 이 소재의 장면 요소를 더해보세요.`)
+    setNotice(`“${item.keyword}”을(를) 선택했습니다. 아래에서 이 소재의 표현 요소를 더해보세요.`)
   }
 
   const toggleMetaKeyword = (keyword: string) => {
@@ -168,7 +169,7 @@ function App() {
         </nav>
         <div className="rail-tip">
           <span>☀</span>
-          <div><b>작은 팁</b><p>소재는 2–3개만 골라야 장면이 또렷해져요.</p></div>
+          <div><b>작은 팁</b><p>소재 하나만 고르면 이미지가 또렷해져요.</p></div>
         </div>
       </aside>
 
