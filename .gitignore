@@ -1,0 +1,4 @@
+node_modules/
+dist/
+.keyword_catalog_cache.json
+*.tsbuildinfo
