@@ -52,6 +52,33 @@ pnpm preview
 
 `pnpm build`의 결과물은 `dist/`에 생성되며, Netlify·Vercel·Cloudflare Pages·GitHub Pages 등 정적 호스팅 환경에 배포할 수 있습니다.
 
+## Vercel 배포
+
+이 프로젝트는 Vite 정적 사이트이며, `vercel.json`에 빌드·출력·SPA 재작성 설정이 포함되어 있습니다.
+
+1. ZIP 파일을 **먼저 압축 해제**합니다. ZIP 자체를 Vercel 또는 GitHub에 단일 파일로 올리지 마세요.
+2. Vercel에서 프로젝트를 가져올 때 **Root Directory를 비워 두거나 `./`**로 설정합니다. `src`나 `dist`를 루트로 지정하면 안 됩니다.
+3. 배포 루트에는 아래 항목이 나란히 있어야 합니다.
+
+   ```text
+   package.json
+   src/
+   public/
+   vercel.json
+   ```
+
+4. Vercel 설정을 직접 입력해야 한다면 다음 값을 사용합니다.
+
+   | 설정 | 값 |
+   | --- | --- |
+   | Framework Preset | Vite |
+   | Build Command | `pnpm run build` |
+   | Output Directory | `dist` |
+   | Install Command | `pnpm install --frozen-lockfile` |
+   | Node.js | 22.x |
+
+`TS18003`은 Vercel이 `tsconfig.app.json`과 같은 위치에서 `src/` 폴더를 찾지 못했을 때 발생합니다. 위 네 항목이 같은 배포 루트에 있는지 확인하면 해결됩니다.
+
 ## 데이터 구조
 
 실행에 필요한 데이터는 저장소에 포함됩니다.

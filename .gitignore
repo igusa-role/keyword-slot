@@ -1,5 +1,6 @@
 node_modules/
 dist/
+.vercel/
 .keyword_catalog_cache.json
 .keyword_translation_cache.json
 .keyword_split_cache.json
