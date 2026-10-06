@@ -1,14 +1,8 @@
-import type { Category, Difficulty, KeywordItem } from '../types'
+import type { KeywordItem, SaleMonth } from '../types'
 
-export function filterKeywords(
-  catalog: KeywordItem[],
-  category: Category | '전체',
-  difficulty: Difficulty | '전체',
-): KeywordItem[] {
-  return catalog.filter((item) =>
-    (category === '전체' || item.category === category) &&
-    (difficulty === '전체' || item.difficulty === difficulty),
-  )
+export function filterKeywords(catalog: KeywordItem[], saleMonth: SaleMonth | '전체'): KeywordItem[] {
+  if (saleMonth === '전체') return catalog
+  return catalog.filter((item) => item.salesMonths.includes(saleMonth))
 }
 
 function pickWeighted(items: KeywordItem[]): KeywordItem {
@@ -34,8 +28,6 @@ export function drawSlots(pool: KeywordItem[], amount = 25): KeywordItem[] {
     uniquePool.splice(uniquePool.findIndex((item) => item.keyword === picked.keyword), 1)
   }
 
-  // A narrow filter can contain fewer than 25 records. Repeat weighted picks in
-  // that case so the slot board always remains a complete 5×5 machine.
   while (result.length < amount) {
     result.push(pickWeighted(pool))
   }

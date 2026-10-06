@@ -45,7 +45,7 @@ export function PromptResults({ output, copiedId, onCopy }: PromptResultsProps) 
         <div className="empty-prompt">
           <div className="prompt-icon">○</div>
           <h3>요소 가이드라인을 준비하세요</h3>
-          <p>슬롯에서 소재를 고르고 메타키워드를 더하면, 검정 외곽선 기반의 단일 요소 가이드라인이 자동으로 조립됩니다.</p>
+          <p>슬롯에서 소재 하나를 고르면, 검정 외곽선 기반의 단일 요소 가이드라인이 자동으로 조립됩니다.</p>
         </div>
       )}
     </section>
