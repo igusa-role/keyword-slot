@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { FilterChips } from './components/FilterChips'
+import { ExpansionIdeas } from './components/ExpansionIdeas'
 import { FlowerMascot } from './components/FlowerMascot'
 import { ImageCropTool } from './components/ImageCropTool'
 import { PromptResults } from './components/PromptResults'
@@ -24,6 +25,23 @@ function App() {
   const [isRolling, setIsRolling] = useState(false)
   const [notice, setNotice] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [expansionMap, setExpansionMap] = useState<Record<string, string[]> | null>(null)
+
+  useEffect(() => {
+    let cancelled = false
+    void fetch('/keyword-expansions.json')
+      .then((response) => {
+        if (!response.ok) throw new Error('확장 키워드 데이터를 불러오지 못했습니다.')
+        return response.json() as Promise<Record<string, string[]>>
+      })
+      .then((data) => {
+        if (!cancelled) setExpansionMap(data)
+      })
+      .catch(() => {
+        if (!cancelled) setExpansionMap({})
+      })
+    return () => { cancelled = true }
+  }, [])
 
   const filteredCatalog = useMemo(() => filterKeywords(catalog, saleMonth), [saleMonth])
   const monthCounts = useMemo(
@@ -34,6 +52,7 @@ function App() {
     [],
   )
   const activeKeyword = selected.at(-1)
+  const activeExpansions = activeKeyword && expansionMap ? expansionMap[activeKeyword.keyword] ?? [] : []
   const prompt = useMemo(
     () => buildPrompt({
       primaryKeyword: activeKeyword?.keyword,
@@ -86,7 +105,7 @@ function App() {
       return
     }
     setSelected([item])
-    setNotice(`“${item.keyword}”을(를) 선택했습니다. 이 소재 하나로 요소 가이드라인을 만듭니다.`)
+    setNotice(`“${item.keyword}”을(를) 선택했습니다. 확장 키워드와 그림 아이디어를 확인해 보세요.`)
   }
 
   const copyText = (id: string, value: string) => {
@@ -123,6 +142,7 @@ function App() {
         <nav className="rail-nav" aria-label="제작 단계">
           <a className="active" href="#month-filter"><span>●</span> 판매 월 고르기</a>
           <a href="#slot-board"><span>✦</span> 키워드 돌리기</a>
+          <a href="#idea-output"><span>✧</span> 그림 아이디어</a>
           <a href="#prompt-output"><span>▦</span> 가이드라인 복사</a>
         </nav>
         <ImageCropTool />
@@ -211,6 +231,7 @@ function App() {
         </section>
 
         <section className="builder-section">
+          <ExpansionIdeas keyword={activeKeyword?.keyword} expansions={activeExpansions} isLoading={expansionMap === null} />
           <PromptResults output={prompt} copiedId={copiedId} onCopy={copyText} />
         </section>
 
