@@ -1,13 +1,19 @@
 {
-  "name": "keywordslot",
+  "name": "keyword-slot-studio",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "월별 판매 키워드 기반 그림 아이디어·요소 가이드라인 생성 도구",
   "type": "module",
   "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=11.0.0"
+  },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "lint": "tsc -b --pretty false",
+    "check": "pnpm lint && pnpm build",
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
