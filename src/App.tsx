@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { FilterChips } from './components/FilterChips'
 import { FlowerMascot } from './components/FlowerMascot'
+import { ImageCropTool } from './components/ImageCropTool'
 import { MetaKeywordPanel } from './components/MetaKeywordPanel'
 import { PromptResults } from './components/PromptResults'
 import { SlotBoard } from './components/SlotBoard'
@@ -162,7 +163,7 @@ function App() {
 
   return (
     <main className="app-shell">
-      <aside className="studio-rail" aria-label="키워드 슬롯 탐색">
+      <aside className="studio-rail" aria-label="키워드 슬롯 도구">
         <a className="brand rail-brand" href="#top" aria-label="키워드 슬롯 홈">
           <span className="brand-mark"><i /> <i /> <i /></span>
           <span><b>키워드</b> 슬롯</span>
@@ -177,6 +178,7 @@ function App() {
           <a href="#meta-keywords"><span>✎</span> 장면 요소 더하기</a>
           <a href="#prompt-output"><span>▦</span> 프롬프트 복사</a>
         </nav>
+        <ImageCropTool />
         <div className="rail-tip">
           <span>☀</span>
           <div><b>작은 팁</b><p>소재 하나만 고르면 이미지가 또렷해져요.</p></div>

@@ -25,7 +25,7 @@ button { cursor: pointer; }
 button:disabled { cursor: wait; }
 
 .app-shell { min-height: 100vh; display: grid; grid-template-columns: 248px minmax(0, 1fr); background: radial-gradient(circle at 90% 4%, rgba(255, 201, 40, .17), transparent 23rem), var(--mist); }
-.studio-rail { position: sticky; top: 0; height: 100vh; overflow: hidden; padding: 22px 19px 18px; display: flex; flex-direction: column; border-right: 1px solid #dce6f4; background: rgba(255, 253, 248, .96); }
+.studio-rail { position: sticky; top: 0; height: 100vh; overflow-y: auto; padding: 22px 19px 18px; display: flex; flex-direction: column; border-right: 1px solid #dce6f4; background: rgba(255, 253, 248, .96); scrollbar-width: thin; scrollbar-color: #cdddf4 transparent; }
 .brand { color: var(--cobalt); text-decoration: none; display: flex; align-items: center; gap: 9px; font-size: 17px; letter-spacing: -.05em; }
 .brand b { font-weight: 800; }
 .brand-mark { width: 34px; height: 34px; display: flex; gap: 3px; align-items: center; justify-content: center; border: 2px solid var(--ink); border-radius: 10px 14px 12px 12px; background: var(--sun); box-shadow: 3px 3px 0 var(--cobalt); transform: rotate(-4deg); }
@@ -41,10 +41,29 @@ button:disabled { cursor: wait; }
 .rail-nav a span { display: inline-block; width: 21px; color: var(--cobalt); }
 .rail-nav a:hover { color: var(--cobalt); background: #edf4ff; transform: translateX(2px); }
 .rail-nav a.active { color: var(--cobalt); background: linear-gradient(90deg, #e7f0ff, #f8fbff); box-shadow: inset 3px 0 0 var(--cobalt); }
-.rail-tip { margin-top: auto; padding: 15px 13px; display: flex; gap: 9px; border: 1px solid #f0df98; border-radius: 15px; background: #fff9e1; color: var(--ink); }
+.rail-tip { margin-top: 16px; padding: 15px 13px; display: flex; gap: 9px; border: 1px solid #f0df98; border-radius: 15px; background: #fff9e1; color: var(--ink); }
 .rail-tip > span { color: #c98d00; font-size: 20px; }
 .rail-tip b { font-size: 12px; }
 .rail-tip p { margin: 4px 0 0; color: #66551c; font-size: 10px; line-height: 1.55; word-break: keep-all; }
+.crop-tool { margin-top: 16px; padding: 14px 12px; border: 1px solid #cbdcf4; border-radius: 15px; background: linear-gradient(145deg, #f6faff, #fffdf8); }
+.crop-tool-heading .eyebrow { margin-bottom: 5px; color: var(--cobalt); font-size: 9px; }
+.crop-tool-heading h3 { margin: 0; color: var(--ink); font-size: 14px; letter-spacing: -.055em; }
+.crop-tool-heading > p:not(.eyebrow) { margin: 5px 0 0; color: #53647d; font-size: 10px; line-height: 1.5; word-break: keep-all; }
+.crop-upload { margin-top: 11px; padding: 10px; display: grid; gap: 2px; border: 1px dashed #92b5e9; border-radius: 10px; color: var(--cobalt); background: #fff; cursor: pointer; transition: background .18s ease, border-color .18s ease, transform .18s ease; }
+.crop-upload:hover { border-color: var(--cobalt); background: #edf4ff; transform: translateY(-1px); }
+.crop-upload.processing { opacity: .72; cursor: wait; }
+.crop-upload span { font-size: 11px; font-weight: 800; }
+.crop-upload small { color: #7184a1; font: 8px 'DM Mono', monospace; }
+.crop-upload input { display: none; }
+.crop-status { min-height: 30px; margin: 9px 0 0; color: #546680; font-size: 9px; line-height: 1.5; word-break: keep-all; }
+.crop-result { display: grid; gap: 7px; }
+.crop-preview { min-height: 90px; padding: 8px; display: grid; place-items: center; border: 1px solid #d7e3f2; border-radius: 10px; background-color: #fff; background-image: linear-gradient(45deg, #eef3f8 25%, transparent 25%), linear-gradient(-45deg, #eef3f8 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eef3f8 75%), linear-gradient(-45deg, transparent 75%, #eef3f8 75%); background-position: 0 0, 0 6px, 6px -6px, -6px 0; background-size: 12px 12px; }
+.crop-preview img { max-width: 100%; max-height: 142px; display: block; object-fit: contain; }
+.crop-download, .crop-reset { min-height: 31px; padding: 7px 9px; display: flex; align-items: center; justify-content: space-between; border-radius: 8px; font-size: 10px; font-weight: 800; text-decoration: none; }
+.crop-download { border: 1px solid var(--cobalt); color: var(--milk); background: var(--cobalt); }
+.crop-download span { color: var(--sun); font-size: 15px; line-height: 1; }
+.crop-reset { border: 1px solid #c7d7eb; color: #52647f; background: #fff; }
+.crop-privacy { margin: 9px 0 0; color: #7b8ba0; font-size: 8px; line-height: 1.4; }
 
 .app-content { min-width: 0; }
 .topbar { height: 74px; max-width: 1430px; margin: 0 auto; padding: 0 42px; display: flex; align-items: center; justify-content: space-between; color: #52627a; }
