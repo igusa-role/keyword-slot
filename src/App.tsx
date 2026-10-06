@@ -17,10 +17,6 @@ const catalogStats = {
   salesMentions: catalog.reduce((total, item) => total + item.salesCount, 0),
 }
 
-function formatSaleDate(value?: string): string {
-  return value ? value.replaceAll('-', '.') : '날짜 미확인'
-}
-
 function App() {
   const [saleMonth, setSaleMonth] = useState<SaleMonth | '전체'>('전체')
   const [slots, setSlots] = useState<KeywordItem[]>(() => drawSlots(catalog))
@@ -43,7 +39,6 @@ function App() {
       primaryKeyword: activeKeyword?.keyword,
       primaryKeywordEnglish: activeKeyword?.englishKeyword,
       selectedKeywords: selected.map((item) => item.keyword),
-      salesDates: activeKeyword?.salesDates,
     }),
     [activeKeyword, selected],
   )
@@ -91,7 +86,7 @@ function App() {
       return
     }
     setSelected([item])
-    setNotice(`“${item.keyword}”을(를) 선택했습니다. 최근 판매일은 ${formatSaleDate(item.salesDates.at(-1))}입니다.`)
+    setNotice(`“${item.keyword}”을(를) 선택했습니다. 이 소재 하나로 요소 가이드라인을 만듭니다.`)
   }
 
   const copyText = (id: string, value: string) => {
@@ -123,7 +118,7 @@ function App() {
         <div className="rail-copy">
           <p className="eyebrow">SALES KEYWORD TOOL</p>
           <h2>판매 월부터,<br />소재를 고르세요.</h2>
-          <p>실제 판매 날짜를 확인하며 한 가지 소재용 요소 가이드라인을 만듭니다.</p>
+          <p>판매 월을 기준으로 한 가지 소재용 요소 가이드라인을 만듭니다.</p>
         </div>
         <nav className="rail-nav" aria-label="제작 단계">
           <a className="active" href="#month-filter"><span>●</span> 판매 월 고르기</a>
@@ -151,7 +146,7 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow blue">SALES MONTH TO SKETCH</p>
             <h1>판매 월을 고르고<br /><em>그리고 싶은 소재</em>를<br />먼저 만나보세요.</h1>
-            <p>실제 판매 날짜가 연결된 키워드를 월별로 돌리고, 마음에 드는 소재 하나를 요소 가이드라인으로 바로 완성합니다.</p>
+            <p>실제 판매 이력을 바탕으로 월별 키워드를 돌리고, 마음에 드는 소재 하나를 요소 가이드라인으로 바로 완성합니다.</p>
             <div className="hero-stats">
               <span><b>{catalogStats.keywords.toLocaleString()}</b> 고유 키워드</span>
               <span><b>{catalogStats.months}</b> 판매 월</span>
@@ -208,7 +203,6 @@ function App() {
                 ))}
               </div>
             ) : <p className="selection-empty">아직 선택한 소재가 없어요.<br />아래 카드에서 마음에 드는<br />소재를 골라보세요.</p>}
-            {activeKeyword ? <div className="selection-sales"><span>RECENT SALE</span><b>{formatSaleDate(activeKeyword.salesDates.at(-1))}</b><p>판매일 {activeKeyword.salesDates.length}일 · 언급 {activeKeyword.salesCount}회</p></div> : null}
             <div className="data-source">
               <span>DATA NOTE</span>
               <p>선택한 월에 실제로 판매된 키워드만 슬롯 후보에 포함합니다.</p>
