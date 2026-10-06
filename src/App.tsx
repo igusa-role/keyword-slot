@@ -9,7 +9,7 @@ import keywordCatalog from './data/keywordCatalog.json'
 import { translateMetaKeyword } from './data/metaKeywords'
 import { buildPrompt } from './lib/promptBuilder'
 import { drawSlots, filterKeywords } from './lib/slotMachine'
-import { CATEGORY_ORDER, DIFFICULTY_ORDER, type Category, type Difficulty, type IllustrationStyle, type KeywordItem } from './types'
+import { CATEGORY_ORDER, DIFFICULTY_ORDER, type Category, type Difficulty, type KeywordItem } from './types'
 
 const catalog = keywordCatalog as KeywordItem[]
 const MAX_SELECTED = 1
@@ -25,7 +25,6 @@ function App() {
   const [slots, setSlots] = useState<KeywordItem[]>(() => drawSlots(catalog))
   const [selected, setSelected] = useState<KeywordItem[]>([])
   const [metaByKeyword, setMetaByKeyword] = useState<Record<string, string[]>>({})
-  const [illustrationStyle, setIllustrationStyle] = useState<IllustrationStyle>('fill')
   const [isRolling, setIsRolling] = useState(false)
   const [notice, setNotice] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
@@ -58,9 +57,8 @@ function App() {
       metaKeywordsEnglish: allMetaEnglish,
       category: activeKeyword?.category,
       difficulty: activeKeyword?.difficulty ?? '보통',
-      style: illustrationStyle,
     }),
-    [activeKeyword, selected, allMeta, allMetaEnglish, illustrationStyle],
+    [activeKeyword, selected, allMeta, allMetaEnglish],
   )
 
   const spin = () => {
@@ -151,14 +149,6 @@ function App() {
     }
     setCopiedId(id)
     window.setTimeout(() => setCopiedId(null), 1500)
-  }
-
-  const changeIllustrationStyle = (style: IllustrationStyle) => {
-    setIllustrationStyle(style)
-    setCopiedId(null)
-    setNotice(style === 'outline'
-      ? '선 있는 버전을 선택했습니다. 검정 라인아트 프롬프트로 바뀝니다.'
-      : '선 없는 버전을 선택했습니다. 단색 색면 프롬프트로 바뀝니다.')
   }
 
   return (
@@ -270,13 +260,7 @@ function App() {
             onToggle={toggleMetaKeyword}
             onAdd={addMetaKeyword}
           />
-          <PromptResults
-            output={prompt}
-            style={illustrationStyle}
-            copiedId={copiedId}
-            onStyleChange={changeIllustrationStyle}
-            onCopy={copyText}
-          />
+          <PromptResults output={prompt} copiedId={copiedId} onCopy={copyText} />
         </section>
 
         <footer>

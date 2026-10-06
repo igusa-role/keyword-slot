@@ -17,7 +17,6 @@ export const DIFFICULTY_ORDER = ['쉬움', '보통', '어려움'] as const
 
 export type Category = (typeof CATEGORY_ORDER)[number]
 export type Difficulty = (typeof DIFFICULTY_ORDER)[number]
-export type IllustrationStyle = 'outline' | 'fill'
 
 export interface KeywordItem {
   keyword: string
