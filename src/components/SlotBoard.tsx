@@ -34,13 +34,10 @@ export function SlotBoard({ slots, saleMonth, selectedKeywords, isRolling, onTog
               disabled={isRolling}
               aria-pressed={isSelected}
               data-sales-months={slot.salesMonths.join(',')}
-              aria-label={`${slot.keyword}, 판매일 ${slot.salesDates.length}일, 판매 언급 ${slot.salesCount}회${isSelected ? ', 선택됨' : ''}`}
+              aria-label={`${slot.keyword}, 판매 언급 ${slot.salesCount}회${isSelected ? ', 선택됨' : ''}`}
             >
               <span className="slot-number">{String(index + 1).padStart(2, '0')}</span>
               <strong>{slot.keyword}</strong>
-              <span className="slot-meta">
-                <b>판매일 {slot.salesDates.length}일</b>
-              </span>
               <span className="slot-sales">판매 언급 {slot.salesCount}회</span>
             </button>
           )
